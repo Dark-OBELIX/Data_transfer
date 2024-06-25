@@ -1,0 +1,110 @@
+Créer la data base chu 
+Create database ChuData ; 
+Use ChuData
+Lister les permissions actuelle dans CLOUDERA 
+hdfs dfs -ls -R /user/cloudera/ChuData
+activer les permissions partt : 
+hdfs dfs -chmod -R 777 /user/cloudera/ChuData
+
+DIMENSIONS 
+PATIENT 
+CREATE TABLE IF NOT EXISTS Dimension_Patient (
+  IdPatient INT,
+  Age INT,
+  Sexe STRING,
+  Departement STRING, 
+  EstDeces BOOLEAN,
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ';'
+STORED AS TEXTFILE
+LOCATION '/user/cloudera/ChuData/Patient';
+DATE 
+CREATE TABLE IF NOT EXISTS Dimension_Date (
+  IdDate INT,
+  Jour INT,
+  Mois INT,
+  Annee INT
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ';'
+STORED AS TEXTFILE
+LOCATION '/user/cloudera/ChuData/Date';
+
+PROFESSIONNEL : 
+CREATE TABLE IF NOT EXISTS Dimension_Professionnel (
+  Nom STRING,
+  Prenom STRING,
+  Specialite STRING, 
+  IdProfessionnel INT,
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ';'
+STORED AS TEXTFILE
+LOCATION '/user/cloudera/ChuData/Professionnel';
+Diagnostic : 
+CREATE TABLE IF NOT EXISTS Dimension_Diagnostic (
+  Description_Diagnostic STRING,
+  Code_Diagnostic STRING,
+  Jours_Hospitalisation INT, 
+ Identifiant_patient INT,
+  IdConsultation INT
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ';'
+STORED AS TEXTFILE
+LOCATION '/user/cloudera/ChuData/Consultation';
+Localisation : 
+CREATE TABLE IF NOT EXISTS Dimension_Localisation (
+  IdLocalisation INT,
+  Departement STRING,
+  Ville STRING,
+  Pays STRING,
+  Etablissement STRING,
+  Satisfaction_Etablissement DECIMAL
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ';'
+STORED AS TEXTFILE
+LOCATION '/user/cloudera/ChuData/Localisation';
+Table des faits : 
+CREATE TABLE IF NOT EXISTS Faits_Consultation (
+  FK_IdPatient INT,
+  FK_IdDate INT,
+  FK_IdProfessionnel INT,
+  FK_IdConsultation INT,
+  Nombre_Consultation INT,
+  Nombre_Hospitalisation INT,
+  Nombre_Deces INT,
+  Taux_Satisfaction DECIMAL
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '';
+STORED AS TEXTFILE
+LOCATION '/user/cloudera/ChuData/Faits_consultation';
+Peuplement des dimensions ( vérifier si les fichiers sont stockés dans user/cloudera ou user/hive)
+LOAD DATA INPATH '/user/cloudera/ChuData/Patient/Patient.txt' INTO TABLE Dimension_Patient;
+LOAD DATA INPATH '/user/cloudera/ChuData/Date/Date.txt' INTO TABLE Dimension_Date;
+LOAD DATA INPATH '/user/cloudera/ChuData/Professionnel/Professionnel.txt' INTO TABLE Dimension_Professionnel;
+LOAD DATA INPATH '/user/cloudera/ChuData/Diagnostic/Diagnostic.txt' INTO TABLE Dimension_Diagnostic;
+LOAD DATA INPATH '/user/cloudera/ChuData/Localisation/Localisation.txt' INTO TABLE Dimension_Localisation;
+Créer la table des faits 
+CREATE TABLE IF NOT EXISTS Faits_Consultation (
+  FK_IdPatient INT,
+  FK_IdDate INT,
+  FK_IdProfessionnel INT,
+  FK_IdConsultation INT,
+  Nombre_Consultation INT,
+  Nombre_Hospitalisation INT,
+  Nombre_Deces INT,
+  Taux_Satisfaction DECIMAL
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ';'
+STORED AS TEXTFILE
+LOCATION '/user/cloudera/ChuData/Faits_consultation';
+
+Loader la table des faits 
+
+Les dimensions sont créées : 
+ 
