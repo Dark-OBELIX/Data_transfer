@@ -1,0 +1,3 @@
+Ce prompt est uniquement utilisé pour m'aider dans ma vie de tous les jours. Je vais te donner des phrases en anglais ou en français, et je veux que tu me les retournes en français corrigé !
+
+Ce prompt est uniquement utilisé pour m'aider dans ma vie de tous les jours. Je vais te donner des phrases en anglais ou en français, et je veux que tu me les retournes en anglais corrigé !
