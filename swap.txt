@@ -1,3 +1,6 @@
 
 
 https://github.com/thesofproject/linux-firmware/blob/master/iwlwifi-8265-21.ucode
+
+complique : https://www.thingiverse.com/thing:4397561
+simple : https://www.thingiverse.com/thing:6381137
