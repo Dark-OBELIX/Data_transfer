@@ -1,1 +1,21 @@
+•  Ministère de la Transition écologique et solidaire. (n.d.). Chiffres clés de l'énergie - International. Ministère de la Transition écologique et solidaire. https://www.statistiques.developpement-durable.gouv.fr/edition-numerique/chiffres-cles-energie/11-international
 
+•  Planète Energies. (n.d.). Comment ça marche : turbo-alternateur. Planète Energies. https://www.planete-energies.com/fr/media/article/comment-ca-marche-turbo-alternateur
+
+•  Institut de l'Énergie et de l'Environnement de la Francophonie (IDÉLÉ). (n.d.). Fiche 6 - Solaire thermique. IDÉLÉ. https://idele.fr/typo3conf/ext/idele_enr/Resources/Public/Fiches/Fiche%206%20-%20Solaire%20thermique.pdf
+
+•  Neozone. (2025, avril 3). Texenergy : l’invention d’une éolienne portable et nomade pour générer de l’électricité de jour comme de nuit. Neozone. https://www.neozone.org/innovation/texenergy-linvention-dune-eolienne-portative-et-nomade-pour-generer-de-lelectricite-de-jour-comme-de-nuit/
+
+•  Rathinam, S., & Rajasekaran, P. (2018). Electricity generation in microbial fuel cell (MFC) by bacterium isolated from rice paddy. E3S Web of Conferences, 37, 02036. https://www.e3s-conferences.org/articles/e3sconf/pdf/2018/09/e3sconf_cenviron2018_02036.pdf
+
+•  Sorbonne Université. (n.d.). La pile patate. Fablab Sorbonne Université. https://wiki.fablab.sorbonne-universite.fr/BookStack/books/petits-projets-sLD/page/la-pile-patate
+
+•  Gigodot Aldaz, J., & Lopez-y-Diaz, A. (n.d.). Modélisation d’une pile acide ou Daniell grâce à la pomme de terre. Neo Media. http://neo.media.free.fr/tpe/TPE.pdf
+
+•  BBC Future. (2013, novembre 12). Potato power: how a humble spud could light the world. BBC. https://www.bbc.com/future/article/20131112-potato-power-to-light-the-world
+
+•  Techniques de l'Ingénieur. (n.d.). Conclusion. Techniques de l'Ingénieur. https://www.techniques-ingenieur.fr/base-documentaire/energies-th4/convertisseurs-electriques-et-applications-42253210/generateurs-thermoelectriques-de-la-conception-aux-applications-d3241/conclusion-d3241niv10006.html
+
+•  Greth. (n.d.). Optimisation de générateurs thermovoltaïques pour la production d’électricité. Greth. https://greth.fr/optimisation-de-generateurs-thermoelectriques-pour-la-production-delectricite/
+
+•  Low Tech Lab. (n.d.). Pédalier générateur. Low Tech Lab. https://wiki.lowtechlab.org/wiki/P%C3%A9dalier_g%C3%A9n%C3%A9rateur
