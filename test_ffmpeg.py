@@ -5,44 +5,57 @@ Dans VLC : http://<IP_DE_TON_PC>:8080
 """
 
 import sys
+import time
 import subprocess
 import imageio_ffmpeg
 
 HOST = "0.0.0.0"
 PORT = 8080
-CAMERA = r"Intel(R) RealSense(TM) Depth Camera 415  RGB"   # <-- remplace par le nom exact de ta caméra
-SIZE = "1280x720"                  # résolution de capture
+CAMERA = "Intel(R) RealSense(TM) Depth Camera 415  RGB"
+SIZE = "1280x720"
 FPS = 30
 
-def main():
-    if len(sys.argv) > 1:
-        globals()["CAMERA"] = sys.argv[1]   # possibilité de passer le nom en argument
 
+def build_command(camera):
     ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
-    command = [
+    return [
         ffmpeg,
+        "-hide_banner", "-loglevel", "warning",
         "-f", "dshow",
-        "-rtbufsize", "100M",                 # tampon de capture beaucoup plus grand
-        "-framerate", "30",
-        "-video_size", "1280x720",
-        "-i", f"video={CAMERA}",
-        "-c:v", "libx264", "-preset", "ultrafast",   # ultrafast au lieu de veryfast
+        "-rtbufsize", "100M",
+        "-framerate", str(FPS),
+        "-video_size", SIZE,
+        "-i", f"video={camera}",
+        "-c:v", "libx264", "-preset", "ultrafast",
         "-tune", "zerolatency",
         "-b:v", "2000k",
         "-pix_fmt", "yuv420p",
         "-f", "mpegts",
         "-listen", "1",
-        f"http://{HOST}:{PORT}"
+        f"http://{HOST}:{PORT}",
     ]
 
+
+def main():
+    camera = sys.argv[1] if len(sys.argv) > 1 else CAMERA
+    command = build_command(camera)
+
     print(f"Flux en attente... Dans VLC : http://<IP_DE_TON_PC>:{PORT}")
-    process = subprocess.Popen(command, stdout=subprocess.DEVNULL,
-                               stderr=subprocess.STDOUT, text=True)
+    print("Ctrl+C pour arrêter.")
+
+    process = None
     try:
-        process.wait()
+        while True:
+            # stderr visible pour voir les vraies erreurs de ffmpeg
+            process = subprocess.Popen(command, stdout=subprocess.DEVNULL)
+            code = process.wait()
+            print(f"[ffmpeg terminé, code {code}] Relance dans 1 s...")
+            time.sleep(1)
     except KeyboardInterrupt:
         print("\nArrêt du flux.")
-        process.terminate()
+        if process and process.poll() is None:
+            process.terminate()
+
 
 if __name__ == "__main__":
     main()
