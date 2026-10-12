@@ -12,7 +12,7 @@ import subprocess
 HOST = "0.0.0.0"
 PORT = 8080
 DEVICE = "/dev/video4"      # <-- adapte selon v4l2-ctl --list-devices
-SIZE = "1280x720"
+SIZE = "1920x1080"
 FPS = 30
 
 
